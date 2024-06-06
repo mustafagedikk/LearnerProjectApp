@@ -47,12 +47,12 @@
 </nav>
 <div class="bg-secondary" style="min-height: 100vh;">
     <div class="container">
-        @*<div class="row justify-content-center mb-5">
+        <div class="row justify-content-center mb-5">
                 <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="0">
-                    <h2 class="line-bottom text-center mb-4">Son Eklenen Kurslar</h2>
-                    <p>Alanında uzman eğitmenler tarafından hazırlanan kurslarımızı inceleyebilirsiniz.</p>
+                    <h2 class="line-bottom text-center mb-4">Kurs Ekle</h2>
+                   
                 </div>
-            </div>*@
+            </div>
         <div class="row">
             @foreach (var item in Model.Item1)
             {
@@ -69,7 +69,10 @@
                             <p class="mb-4">@(item.Description.Length > 30 ? item.Description.Substring(0, 20) : item.Description)</p>
                             <div class="border-top d-flex justify-content-between pt-3 mt-3 align-items-center">
                                 <div><span class="price">@item.Price ₺</span></div>
-                                <div><a href="/Default/CourseDetails/@item.CourseId">Kurs Satın Al</a></div>
+                                <form method="post" action="/CourseRegister/Index/@item.CourseId">
+                                    <input type="submit" value="Kurs Satın Al" />
+                                </form>
+                                
                             </div>
                         </div>
                     </div>

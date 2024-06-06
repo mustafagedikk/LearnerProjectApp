@@ -16,28 +16,10 @@ namespace LearnerProjectApp.Controllers
     {
         CourseManager courseManager = new CourseManager(new EfCourseDal());
         ReviewManager rw = new ReviewManager(new EfReviewDal());
-        Context context = new Context();
+        StudentManager st = new StudentManager(new EfStudentDal());
+        CourseRegisterManager cr = new CourseRegisterManager(new EfCourseRegisterDal());
 
-        // Index metodu, hem HttpGet hem de HttpPost olarak işaretlenmiştir.
-       
       
-        //public ActionResult Index()
-        //{
-        //    List<CourseReviewViewModel> reviewList = rw.TGetList()
-        //         .GroupBy(x => x.CourseId)
-        //         .Select(group => new CourseReviewViewModel
-        //         {
-        //             CourseId = group.Key,
-        //             ReviewValue = group.Average(x => x.ReviewValue)
-        //         }).ToList();
-
-            
-            
-        //        var courseList = courseManager.TGetList().OrderByDescending(x => x.CourseName).ToList();
-        //        var model = new Tuple<List<Course>, List<CourseReviewViewModel>>(courseList, reviewList);
-        //        return PartialView(model);
-            
-        //}
         [HttpGet]
         public ActionResult Index(string search)
         {
@@ -64,8 +46,16 @@ namespace LearnerProjectApp.Controllers
             }
         }
 
-
-
+        [HttpPost]
+        public ActionResult Index(int id,CourseRegister courseRegister)
+        {
+            string user =(string)Session["studentName"];
+           int userid= st.TGetList().Where(x => x.NameSurname == user).Select(x => x.StudentId).FirstOrDefault();
+            courseRegister.StudentId = userid;
+            courseRegister.CourseId = id;
+            cr.TAdd(courseRegister);
+            return RedirectToAction("Index");
+        }
 
     }
 
