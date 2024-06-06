@@ -99,6 +99,10 @@
     <Compile Include="Migrations\202406051021473_mig_add_contact_with_message.designer.cs">
       <DependentUpon>202406051021473_mig_add_contact_with_message.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202406060842258_mig_studenttable_add_email.cs" />
+    <Compile Include="Migrations\202406060842258_mig_studenttable_add_email.designer.cs">
+      <DependentUpon>202406060842258_mig_studenttable_add_email.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202406051021473_mig_add_contact_with_message.resx">
       <DependentUpon>202406051021473_mig_add_contact_with_message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406060842258_mig_studenttable_add_email.resx">
+      <DependentUpon>202406060842258_mig_studenttable_add_email.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,6 +9,7 @@ namespace BussinessLayer.Abstract
 {
     public interface IStudentService : IGenericService<Student>
     {
-        int GetStudentCount();  
+        int GetStudentCount();
+        Student GetStudentValue(Student student);
     }
 }

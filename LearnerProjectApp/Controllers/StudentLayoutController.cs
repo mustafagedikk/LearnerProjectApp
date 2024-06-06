@@ -13,5 +13,11 @@ namespace LearnerProjectApp.Controllers
         {
             return View();
         }
+
+       
+        public ActionResult StudentLayoutSideBar()
+        {
+            return View();
+        }
     }
 }

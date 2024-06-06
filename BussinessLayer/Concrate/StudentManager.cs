@@ -23,29 +23,34 @@ namespace BussinessLayer.Concrate
             return _studentDal.List().Count();
         }
 
+        public Student GetStudentValue(Student student)
+        {
+          return  _studentDal.List(x => x.UserName == student.UserName && x.Password == student.Password).FirstOrDefault();
+        }
+
         public void TAdd(Student entity)
         {
-            throw new NotImplementedException();
+            _studentDal.Insert(entity);
         }
 
         public void TDelete(Student entity)
         {
-            throw new NotImplementedException();
+            _studentDal.Delete(entity);
         }
 
         public Student TGetbyId(int id)
         {
-            throw new NotImplementedException();
+          return  _studentDal.Get(x => x.StudentId == id);
         }
 
         public List<Student> TGetList()
         {
-            throw new NotImplementedException();
+            return _studentDal.List();
         }
 
         public void TUpdate(Student entitiy)
         {
-            throw new NotImplementedException();
+            _studentDal.Update(entitiy);
         }
     }
 }

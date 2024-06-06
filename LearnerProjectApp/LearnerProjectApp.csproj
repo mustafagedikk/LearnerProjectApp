@@ -132,10 +132,13 @@
     <Compile Include="Controllers\AdminLayoutController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CourseRegisterController.cs" />
+    <Compile Include="Controllers\StudentRegisterController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StudentLayoutController.cs" />
+    <Compile Include="Controllers\StudentLoginController.cs" />
     <Compile Include="Controllers\TeacherCourseController.cs" />
     <Compile Include="Controllers\TeacherLayoutController.cs" />
     <Compile Include="Controllers\UILayoutController.cs" />
@@ -475,6 +478,10 @@
     <Content Include="Views\Contact\Contactİnfo.cshtml" />
     <Content Include="Views\Contact\SendMessage.cshtml" />
     <Content Include="Views\StudentLayout\Index.cshtml" />
+    <Content Include="Views\StudentRegister\Index.cshtml" />
+    <Content Include="Views\StudentLogin\StudentLogin.cshtml" />
+    <Content Include="Views\StudentLayout\StudentLayoutSideBar.cshtml" />
+    <Content Include="Views\CourseRegister\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
