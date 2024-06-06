@@ -1,0 +1,90 @@
+﻿@using EntityLayer.Entities
+@model List<Course>
+@{
+    ViewBag.Title = "PassiveCourse";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+
+    int count = 0;
+}
+
+
+<br />
+<h3>Silinmiş Kurslar</h3>
+<br />
+<table class="table table-bordered table-hover">
+    <tr>
+        <th style="text-align:center;">#</th>
+        <th style="text-align:center;">Kurs Adı</th>
+        <th style="text-align:center;">ImageUrl</th>
+        <th style="text-align:center;">Açıklama</th>
+        <th style="text-align:center;">Ücret</th>
+        <th style="text-align:center;">Kategori Adı</th>
+        <th style="text-align:center;">Eğitmen</th>
+        @*<th style="text-align:center;">İşlemler</th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td style="text-align:center;">@count</td>
+            <td style="text-align:center;">@item.CourseName</td>
+            <td style="text-align:center;">@item.ImageUrl</td>
+            <td style="text-align:center;">@(item.Description.Length>20 ? item.Description.Substring(0,29) :  item.Description)</td>
+            <td style="text-align:center;">@item.Price</td>
+            <td style="text-align:center;">@item.Category.CategoryName</td>
+            <td style="text-align:center;">@item.Educator.NameSurname</td>
+            @*<td style="text-align:center;">
+                <a href="#" class="btn btn-outline-danger delete-btn-delete" data-id="@item.CourseId" style="margin-right: 10px;"><i class="fas fa-trash"></i> Sil</a>
+                <a href="/AdminCourse/EditCourse/@item.CourseId" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i> Güncelle</a>
+            </td>*@
+        </tr>
+    }
+</table>
+<a href="/AdminCourse/Index" class="btn btn-primary">Ana Sayfaya</a>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    // Sil butonuna tıklandığında SweetAlert ile onay kutusu göster
+    document.querySelectorAll('.delete-btn-delete').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const courseId = this.getAttribute('data-id');
+
+            Swal.fire({
+                title: '<span style="font-size: 60%;">Silmek istediğinize emin misiniz?</span>',
+
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: 'İptal',
+                customClass: {
+                    popup: 'custom-popup-class'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Silme işlemi gerçekleştir
+                    Swal.fire(
+                        '<span style="font-size: 65%;">Silme işlemi gerçekleşti!</span>',
+                        '',
+                        'success'
+                    ).then(() => {
+                        // Silme işlemi gerçekleştikten sonra controller'a yönlendir
+                        window.location.href = '/AdminCourse/DeleteCourse/' + courseId;
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .custom-popup-class {
+        width: 30% !important;
+    }
+</style>
+
+
+

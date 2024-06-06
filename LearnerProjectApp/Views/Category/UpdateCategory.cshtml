@@ -1,0 +1,63 @@
+﻿@model EntityLayer.Entities.Category
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+<br />
+<br />
+<h2>Kategori Ekle</h2>
+
+<form id="categoryFormUpdate" method="post">
+
+    <input type="hidden" value="@Model.CategoryId" name="CategoryId" />
+    <label>Kategori Adı</label>
+    <input name="CategoryName" value="@Model.CategoryName" class="form-control" />
+    <br />
+    <label>Ikon</label>
+    <input name="Icon" value="@Model.Icon" class="form-control" />
+    <br />
+
+
+    <button id="kaydetupdate" class="btn btn-primary">Kaydet</button>
+
+</form>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#kaydetupdate').click(function (e) {
+            e.preventDefault(); // Varsayılan form gönderimini engelle
+
+            // Form verilerini topla
+            var formData = $('#categoryFormUpdate').serialize();
+
+            // Formu gönder
+            $.post('@Url.Action("UpdateCategory", "Category")', formData)
+            .done(function () {
+                // Başarılı gönderim durumunda SweetAlert bildirimi göster
+                swal({
+                    title: "Başarılı!",
+                    text: "Kayıt başarıyla yapıldı.!",
+                    icon: "success",
+                    button: false // Ok butonunu gizle
+                });
+
+                // Belirli bir süre sonra yönlendirme yap
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Index", "Category")';
+                }, 2000); // 2 saniye bekletme süresi
+            })
+            .fail(function () {
+                // Hata durumunu ele al
+                swal("Hata!", "Kayıt sırasında bir hata oluştu.", "error");
+            });
+        });
+    });
+
+</script>

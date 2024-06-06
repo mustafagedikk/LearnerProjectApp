@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>İstatistikler</h2>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-line fa-5x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Kurs Sayısı</p>
+                    <h6 class="mb-0">@ViewBag.CourseCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-bar fa-5x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Kategori Sayısı</p>
+                    <h6 class="mb-0">@ViewBag.CategoryCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-area fa-5x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Sınıf Sayısı</p>
+                    <h6 class="mb-0">@ViewBag.ClassroomCount </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-pie fa-5x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">En Pahalı Kurs</p>
+                    <h6 class="mb-0"> @ViewBag.CoursePriceTop ₺</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-line fa-5x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Öğrenci Sayısı</p>
+                    <h6 class="mb-0">@ViewBag.StudentCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-area fa-5x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">En Pahalı Kurs Adı</p>
+                    <h6 class="mb-0">@ViewBag.ExpenciveCourseName </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

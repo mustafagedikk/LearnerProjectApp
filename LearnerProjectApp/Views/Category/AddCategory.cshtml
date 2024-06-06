@@ -1,0 +1,57 @@
+﻿@model EntityLayer.Entities.Category
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<br />
+<br />
+<h2>Kategori Ekle</h2>
+
+<form id="categoryForm" method="post">
+
+    <label>Kategori Adı</label>
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    <br />
+    <label>Ikon</label>
+    @Html.TextBoxFor(x => x.Icon, new { @class = "form-control" })
+    <br />
+
+
+    <button id="kaydetDugmesi" class="btn btn-primary">Kaydet</button>
+
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#kaydetDugmesi').click(function (e) {
+            e.preventDefault(); // Varsayılan form gönderimini engelle
+
+            // Form verilerini topla
+            var formData = $('#categoryForm').serialize();
+
+            // Formu gönder
+            $.post('@Url.Action("AddCategory", "Category")', formData)
+            .done(function () {
+                // Başarılı gönderim durumunda SweetAlert bildirimi göster
+                swal({
+                    title: "Başarılı!",
+                    text: "Kayıt başarıyla yapıldı.",
+                    icon: "success",
+                    button: false // Ok butonunu gizle
+                });
+
+                // Belirli bir süre sonra yönlendirme yap
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Index", "Category")';
+                }, 2000); // 2 saniye bekletme süresi
+            })
+            .fail(function () {
+                // Hata durumunu ele al
+                swal("Hata!", "Kayıt sırasında bir hata oluştu.", "error");
+            });
+        });
+    });
+</script>
