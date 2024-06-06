@@ -20,6 +20,6 @@ namespace BussinessLayer.Abstract
 
         List<Course> GetlistwithReview();
 
-        List<Course> GetListWtihSearch(string search, int username);
+        List<Course> GetListWtihSearch(string search);
     }
 }

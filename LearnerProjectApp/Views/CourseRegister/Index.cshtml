@@ -48,16 +48,16 @@
 <div class="bg-secondary" style="min-height: 100vh;">
     <div class="container">
         <div class="row justify-content-center mb-5">
-                <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="0">
-                    <h2 class="line-bottom text-center mb-4">Kurs Ekle</h2>
-                   
-                </div>
+            <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="0">
+               
+                <h4 id="discount-msg" class="line-bottom text-center mb-4">Üyeliğinin ilk haftasına özel %20 indirim fırsatını kaçırma!!</h4>
             </div>
+        </div>
         <div class="row">
             @foreach (var item in Model.Item1)
             {
                 var review = Model.Item2.FirstOrDefault(r => r.CourseId == item.CourseId);
-                <div class="col-12 col-sm-4 col-md-4 col-lg-4 mb-3 mt-4 mb-lg-0"style="border: 2px solid white; padding: 15px; border-radius: 10px;" >
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4 mb-3 mt-4 mb-lg-0" style="border: 2px solid white; padding: 15px; border-radius: 10px;">
                     <div class="custom-media">
                         <a href="#"><img src="@item.ImageUrl" alt="Image" class="img-fluid"></a>
                         <div class="custom-media-body">
@@ -68,11 +68,16 @@
                             <h3>@item.CourseName</h3>
                             <p class="mb-4">@(item.Description.Length > 30 ? item.Description.Substring(0, 20) : item.Description)</p>
                             <div class="border-top d-flex justify-content-between pt-3 mt-3 align-items-center">
-                                <div><span class="price">@item.Price ₺</span></div>
+                                <div>
+                                    <span class="price">
+                                        <span style="text-decoration: line-through;">@item.Price ₺</span>
+                                        &nbsp;&nbsp;
+                                        @((item.Price * 0.8m).ToString("C")) ₺
+                                    </span>
+                                </div>
                                 <form method="post" action="/CourseRegister/Index/@item.CourseId">
                                     <input type="submit" value="Kurs Satın Al" />
                                 </form>
-                                
                             </div>
                         </div>
                     </div>
@@ -82,3 +87,16 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Animation effect for discount message
+    var discountMsg = document.getElementById("discount-msg");
+    setTimeout(function() {
+        discountMsg.style.opacity = "0";
+        setTimeout(function() {
+            discountMsg.style.display = "none";
+        }, 1000); // Fade out duration
+    }, 3000); // Display duration
+</script>
+
+

@@ -76,7 +76,7 @@ namespace BussinessLayer.Concrate
             throw new NotImplementedException();
         }
 
-        public List<Course> GetListWtihSearch(string search,int username)
+        public List<Course> GetListWtihSearch(string search)
         {
             return _courseDal .List(x => x.CourseName.Contains(search)).ToList();
         }
