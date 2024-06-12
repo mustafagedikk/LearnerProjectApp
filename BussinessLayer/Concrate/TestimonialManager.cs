@@ -1,4 +1,5 @@
 ﻿using BussinessLayer.Abstract;
+using DataAccessLayer.Abstract;
 using EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,13 @@ namespace BussinessLayer.Concrate
 {
     public class TestimonialManager : ITestimonialService
     {
+        ITestimonialDal _testimonialDal;
+
+        public TestimonialManager(ITestimonialDal testimonialDal)
+        {
+            _testimonialDal = testimonialDal;
+        }
+
         public void TAdd(Testimonial entity)
         {
             throw new NotImplementedException();
@@ -27,7 +35,7 @@ namespace BussinessLayer.Concrate
 
         public List<Testimonial> TGetList()
         {
-            throw new NotImplementedException();
+          return  _testimonialDal.List();
         }
 
         public void TUpdate(Testimonial entitiy)

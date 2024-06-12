@@ -133,6 +133,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CourseRegisterController.cs" />
+    <Compile Include="Controllers\StudentCourseController.cs" />
     <Compile Include="Controllers\StudentRegisterController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CourseCategoryCountViewModel.cs" />
     <Compile Include="Models\CourseReviewViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -482,6 +484,12 @@
     <Content Include="Views\StudentLogin\StudentLogin.cshtml" />
     <Content Include="Views\StudentLayout\StudentLayoutSideBar.cshtml" />
     <Content Include="Views\CourseRegister\Index.cshtml" />
+    <Content Include="Views\StudentCourse\Index.cshtml" />
+    <Content Include="Views\StudentCourse\MyCourseVideoList.cshtml" />
+    <Content Include="Views\Default\CategoryList.cshtml" />
+    <Content Include="Views\Default\Classroom.cshtml" />
+    <Content Include="Views\Default\AboutUs.cshtml" />
+    <Content Include="Views\Default\Testimonial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

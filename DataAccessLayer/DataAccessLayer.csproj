@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICourseVideoDal.cs" />
     <Compile Include="Abstract\IAboutDal.cs" />
     <Compile Include="Abstract\IBannerDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Concrate\EntityFramework\EfContactDal.cs" />
     <Compile Include="Concrate\EntityFramework\EfCourseDal.cs" />
     <Compile Include="Concrate\EntityFramework\EfCourseRegisterDal.cs" />
+    <Compile Include="Concrate\EntityFramework\EfCourseVideoDal.cs" />
     <Compile Include="Concrate\EntityFramework\EfEducatorDal.cs" />
     <Compile Include="Concrate\EntityFramework\EfFAQDal.cs" />
     <Compile Include="Concrate\EntityFramework\EfMessagesDal.cs" />
@@ -102,6 +104,10 @@
     <Compile Include="Migrations\202406060842258_mig_studenttable_add_email.cs" />
     <Compile Include="Migrations\202406060842258_mig_studenttable_add_email.designer.cs">
       <DependentUpon>202406060842258_mig_studenttable_add_email.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202406071527286_mig_course_view_add.cs" />
+    <Compile Include="Migrations\202406071527286_mig_course_view_add.designer.cs">
+      <DependentUpon>202406071527286_mig_course_view_add.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202406060842258_mig_studenttable_add_email.resx">
       <DependentUpon>202406060842258_mig_studenttable_add_email.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406071527286_mig_course_view_add.resx">
+      <DependentUpon>202406071527286_mig_course_view_add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

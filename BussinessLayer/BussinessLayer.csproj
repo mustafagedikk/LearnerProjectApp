@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IContactService.cs" />
     <Compile Include="Abstract\ICourseService.cs" />
+    <Compile Include="Abstract\ICourseVideoService.cs" />
     <Compile Include="Abstract\IEducatorService.cs" />
     <Compile Include="Abstract\IFAQService.cs" />
     <Compile Include="Abstract\IAboutService.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Concrate\CourseManager.cs" />
     <Compile Include="Concrate\CourseRegisterManager.cs" />
     <Compile Include="Concrate\FAQManager.cs" />
+    <Compile Include="Concrate\CourseVideoManager.cs" />
     <Compile Include="Concrate\IEducatorManager.cs" />
     <Compile Include="Concrate\MessageManager.cs" />
     <Compile Include="Concrate\ReviewManager.cs" />

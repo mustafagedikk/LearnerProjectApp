@@ -11,5 +11,9 @@ namespace BussinessLayer.Abstract
     {
         int GetStudentCount();
         Student GetStudentValue(Student student);
+
+        int GetStudentbyID(string NameSurname);
+
+       
     }
 }

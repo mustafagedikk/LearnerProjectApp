@@ -23,7 +23,7 @@
                                 <div class="review"><span class="icon-star"></span> <span>@(review != null ? review.ReviewValue.ToString("0.00") : "Değerlendirme Yok")</span></div>
                             </div>
                             <h3>@item.CourseName</h3>
-                            <p class="mb-4">@(item.Description.Length > 30 ? item.Description.Substring(0, 20) : item.Description)</p>
+                            <p class="mb-4">@(item.Description.Length >130? item.Description.Substring(0,130) : item.Description)</p>
                             <div class="border-top d-flex justify-content-between pt-3 mt-3 align-items-center">
                                 <div><span class="price">@item.Price ₺</span></div>
                                 <div><a href="/Default/CourseDetails/@item.CourseId">Kurs Detayı</a></div>

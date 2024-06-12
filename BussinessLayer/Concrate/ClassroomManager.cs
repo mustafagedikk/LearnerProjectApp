@@ -25,27 +25,27 @@ namespace BussinessLayer.Concrate
 
         public void TAdd(Classroom entity)
         {
-            throw new NotImplementedException();
+            _classroomDal.Insert(entity);
         }
 
         public void TDelete(Classroom entity)
         {
-            throw new NotImplementedException();
+            _classroomDal.Delete(entity);
         }
 
         public Classroom TGetbyId(int id)
         {
-            throw new NotImplementedException();
+          return  _classroomDal.Get(x => x.ClassroomId == id);
         }
 
         public List<Classroom> TGetList()
         {
-            throw new NotImplementedException();
+            return _classroomDal.List();
         }
 
         public void TUpdate(Classroom entitiy)
         {
-            throw new NotImplementedException();
+            _classroomDal.Update(entitiy);
         }
     }
 }

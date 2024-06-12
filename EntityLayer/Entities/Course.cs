@@ -23,6 +23,8 @@ namespace EntityLayer.Entities
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
+        public bool? Viewing { get; set; }
+
         public ICollection<Review> Reviews { get; set; }
         public ICollection<CourseRegister> CourseRegisters { get; set; }
 

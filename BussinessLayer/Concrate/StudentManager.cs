@@ -18,6 +18,12 @@ namespace BussinessLayer.Concrate
             _studentDal = studentDal;
         }
 
+    
+        public int GetStudentbyID(string NameSurname)
+        {
+           return _studentDal.List(x => x.UserName == NameSurname).Select(x => x.StudentId).FirstOrDefault();
+        }
+
         public int GetStudentCount()
         {
             return _studentDal.List().Count();

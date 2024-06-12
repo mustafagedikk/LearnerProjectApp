@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer.Concrate
+namespace DataAccessLayer.Concrate.EntityFramework
 {
-   public class EfAbautDal:GenericRepository<About>,IAboutDal
+   public class EfCourseVideoDal:GenericRepository<CourseVideo>,ICourseVideoDal
     {
     }
 }
