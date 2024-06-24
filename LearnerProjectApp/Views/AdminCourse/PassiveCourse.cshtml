@@ -1,5 +1,7 @@
 ﻿@using EntityLayer.Entities
-@model List<Course>
+@using PagedList
+@using PagedList.Mvc
+@model  PagedList.IPagedList<Course>
 @{
     ViewBag.Title = "PassiveCourse";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -35,12 +37,18 @@
             <td style="text-align:center;">@item.Category.CategoryName</td>
             <td style="text-align:center;">@item.Educator.NameSurname</td>
             @*<td style="text-align:center;">
-                <a href="#" class="btn btn-outline-danger delete-btn-delete" data-id="@item.CourseId" style="margin-right: 10px;"><i class="fas fa-trash"></i> Sil</a>
-                <a href="/AdminCourse/EditCourse/@item.CourseId" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i> Güncelle</a>
-            </td>*@
+                    <a href="#" class="btn btn-outline-danger delete-btn-delete" data-id="@item.CourseId" style="margin-right: 10px;"><i class="fas fa-trash"></i> Sil</a>
+                    <a href="/AdminCourse/EditCourse/@item.CourseId" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i> Güncelle</a>
+                </td>*@
         </tr>
     }
 </table>
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("PassiveCourse", new { p }), new PagedListRenderOptions
+
+{
+LiElementClasses = new List<string>
+{"page-link"}
+})
 <a href="/AdminCourse/Index" class="btn btn-primary">Ana Sayfaya</a>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

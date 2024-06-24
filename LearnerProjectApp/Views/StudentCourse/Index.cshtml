@@ -1,6 +1,8 @@
 ﻿@using EntityLayer.Entities
 @using LearnerProjectApp.Models
-@model Tuple<List<Course>, List<CourseReviewViewModel>>
+@using PagedList
+@using PagedList.Mvc
+@model Tuple<IPagedList<Course>, List<CourseReviewViewModel>>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/StudentLayout/StudentLayoutSideBar.cshtml";
@@ -51,11 +53,11 @@
 <div class="bg-secondary" style="min-height: 100vh;">
     <div class="container">
         @*<div class="row justify-content-center mb-5">
-            <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="0">
+                <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="0">
 
-                <h4 id="discount-msg" class="line-bottom text-center mb-4">Üyeliğinin ilk haftasına özel %20 indirim fırsatını kaçırma!!</h4>
-            </div>
-        </div>*@
+                    <h4 id="discount-msg" class="line-bottom text-center mb-4">Üyeliğinin ilk haftasına özel %20 indirim fırsatını kaçırma!!</h4>
+                </div>
+            </div>*@
         <div class="row">
             @foreach (var item in Model.Item1)
             {
@@ -91,6 +93,12 @@
             <div style="padding-bottom: 70px;"></div>
         </div>
     </div>
+    <div class="pagination-container">
+        @Html.PagedListPager(Model.Item1, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+        {
+            LiElementClasses = new List<string> { "page-link" }
+        })
+    </div>
 </div>
 
 <script>
@@ -105,5 +113,20 @@
 </script>
 
 
+<style>
+    .pagination-container {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+        .pagination-container .pagination {
+            display: inline-block;
+        }
+
+            .pagination-container .pagination li {
+                display: inline;
+                margin: 0 5px;
+            }
+</style>
 
 

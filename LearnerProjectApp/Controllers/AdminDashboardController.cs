@@ -18,6 +18,7 @@ namespace LearnerProjectApp.Controllers
         // GET: AdminDashboard
         public ActionResult Index()
         {
+
             ViewBag.CourseCount = cm.CourseCount();
             ViewBag.CategoryCount = categoryManager.CategoryCount();
             ViewBag.ClassroomCount = cs.ClassroomCount();

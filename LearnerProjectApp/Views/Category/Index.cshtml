@@ -1,11 +1,13 @@
 ﻿@using EntityLayer.Entities
-@model  List<Category>
+@using PagedList
+@using PagedList.Mvc
+@model  PagedList.IPagedList<Category>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Kategoriler</h2>
 
 <br />
 <br />
@@ -29,6 +31,13 @@
     }
 </table>
 <a href="/Category/AddCategory" class="btn btn-primary">Yeni Kategori Ekle</a>
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+
+{
+LiElementClasses = new List<string>
+{"page-link"}
+})
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
@@ -71,4 +80,18 @@
     .custom-popup-class {
         width: 30% !important;
     }
+
+    .pagination-container {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+        .pagination-container .pagination {
+            display: inline-block;
+        }
+
+            .pagination-container .pagination li {
+                display: inline;
+                margin: 0 5px;
+            }
 </style>

@@ -20,17 +20,17 @@ namespace BussinessLayer.Concrate
 
         public void TAdd(Testimonial entity)
         {
-            throw new NotImplementedException();
+            _testimonialDal.Insert(entity);
         }
 
         public void TDelete(Testimonial entity)
         {
-            throw new NotImplementedException();
+            _testimonialDal.Delete(entity);
         }
 
         public Testimonial TGetbyId(int id)
         {
-            throw new NotImplementedException();
+            return _testimonialDal.Get(x => x.TestimonialId == id);
         }
 
         public List<Testimonial> TGetList()
@@ -40,7 +40,7 @@ namespace BussinessLayer.Concrate
 
         public void TUpdate(Testimonial entitiy)
         {
-            throw new NotImplementedException();
+            _testimonialDal.Update(entitiy);
         }
     }
 }

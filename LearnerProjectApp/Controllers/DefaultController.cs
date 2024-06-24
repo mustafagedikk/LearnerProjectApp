@@ -24,6 +24,7 @@ namespace LearnerProjectApp.Controllers
         StudentManager studentManager = new StudentManager(new EfStudentDal());
         IEducatorManager educatorManager = new IEducatorManager(new EfEducatorDal());
         TestimonialManager testimonialManager = new TestimonialManager(new EfTestimonialDal());
+        QuestionManager QuestionManager = new QuestionManager(new EfQuestionDal());
         public ActionResult Index()
         {
             return View();
@@ -100,5 +101,14 @@ namespace LearnerProjectApp.Controllers
             var values = testimonialManager.TGetList();
             return PartialView(values);
         }
+
+        public PartialViewResult Questions()
+        {
+            var values = QuestionManager.TGetList();
+
+            return PartialView(values);
+        }
+
+
     }
 }

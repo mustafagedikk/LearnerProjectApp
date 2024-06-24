@@ -8,9 +8,10 @@ namespace LearnerProjectApp.Controllers
 {
     public class AdminLayoutController : Controller
     {
-        // GET: AdminLayout
+        
         public ActionResult Index()
         {
+            
             return View();
         }
 
@@ -22,6 +23,7 @@ namespace LearnerProjectApp.Controllers
 
         public PartialViewResult AdminLayoutSideBarPartial()
         {
+            
             return PartialView();
         }
 

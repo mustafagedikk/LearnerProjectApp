@@ -1,0 +1,20 @@
+﻿@using EntityLayer.Entities
+@model List<Contact>
+
+<div class="col-lg-3">
+    <div class="widget">
+        <h3>Contact</h3>
+    @foreach (var item in Model)
+    {
+
+
+        <address>@item.Address</address>
+        <ul class="list-unstyled links mb-4">
+            <li>@item.OpenHours</li>
+            <li>@item.Phone</li>
+            <li>@item.Email</li>
+
+        </ul>
+    }
+    </div> <!-- /.widget -->
+</div> <!-- /.col-lg-3 -->

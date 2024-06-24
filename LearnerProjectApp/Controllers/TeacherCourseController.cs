@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace LearnerProjectApp.Controllers
 {
@@ -15,11 +17,11 @@ namespace LearnerProjectApp.Controllers
         CourseManager CourseManager = new CourseManager(new EfCourseDal());
         CategoryManager CategoryManager = new CategoryManager(new EfCategoryDal());
 
-        public ActionResult Index()
+        public ActionResult Index(int p=1)
         {
             string username = (string)Session["teacherName"];
 
-            var values = CourseManager.GetlistByEducatorUserName(username);
+            var values = CourseManager.GetlistByEducatorUserName(username).ToPagedList(p, 6);
             return View(values);
         }
 

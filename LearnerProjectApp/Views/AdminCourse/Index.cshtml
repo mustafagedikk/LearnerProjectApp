@@ -1,8 +1,10 @@
 ﻿@using EntityLayer.Entities
-@model  List<Course>
+@using PagedList
+@using PagedList.Mvc
+@model  PagedList.IPagedList<Course>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/TeacherLayout/Index.cshtml";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
 
@@ -23,7 +25,7 @@
 
     @foreach (var item in Model)
     {
-        
+
         <tr>
             <td style="text-align:center;">@item.CourseId</td>
             <td style="text-align:center;">@item.CourseName</td>
@@ -41,6 +43,13 @@
 </table>
 <a href="/AdminCourse/AddCourse" class="btn btn-outline-primary">Yeni Kurs Ekle</a>
 <a href="/AdminCourse/PassiveCourse" class="btn btn-outline-info">Pasif Kursları Görüntüle</a>
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+
+{
+LiElementClasses = new List<string>
+{"page-link"}
+})
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
@@ -83,6 +92,20 @@
     .custom-popup-class {
         width: 30% !important;
     }
+
+    .pagination-container {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+        .pagination-container .pagination {
+            display: inline-block;
+        }
+
+            .pagination-container .pagination li {
+                display: inline;
+                margin: 0 5px;
+            }
 </style>
 
 

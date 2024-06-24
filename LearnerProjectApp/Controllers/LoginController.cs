@@ -36,7 +36,7 @@ namespace LearnerProjectApp.Controllers
                 FormsAuthentication.SetAuthCookie(values.UserName, false);
                 Session["teacherName"] = values.NameSurname;
                 
-               return RedirectToAction("Index", "CourseRegister");
+               return RedirectToAction("Index", "TeacherCourse");
                 
             }
            

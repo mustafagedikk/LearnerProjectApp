@@ -1,0 +1,58 @@
+﻿@model  EntityLayer.Entities.Question
+@{
+    ViewBag.Title = "EditFAQ";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+<h2>Sık Sorulan Soruları Düzenle</h2>
+
+<form id="FAQEditform" method="post">
+
+    @Html.HiddenFor(x => x.QuestionId, new { @class = "form-control" })
+    <label>Kurs Adı</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    <label>Açıklama</label>
+ 
+
+    @Html.TextAreaFor(x => x.Description, 3, 1, new { @class = "form-control" })
+    <br />
+    <a href="" id="kaydetFAQ" class="btn btn-primary">Kaydet</a>
+
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#kaydetFAQ').click(function (e) {
+            e.preventDefault(); // Varsayılan form gönderimini engelle
+
+            // Form verilerini topla
+            var formData = $('#FAQEditform').serialize();
+
+            // Formu gönder
+            $.post('@Url.Action("EditFAQ", "AdminFAQ")', formData)
+            .done(function () {
+                // Başarılı gönderim durumunda SweetAlert bildirimi göster
+                swal({
+                    title: "Başarılı!",
+                    text: "Kayıt başarıyla yapıldı.",
+                    icon: "success",
+                    button: false // Ok butonunu gizle
+                });
+
+                // Belirli bir süre sonra yönlendirme yap
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Index", "AdminFAQ")';
+                }, 2000); // 2 saniye bekletme süresi
+            })
+            .fail(function () {
+                // Hata durumunu ele al
+                swal("Hata!", "Kayıt sırasında bir hata oluştu.", "error");
+            });
+        });
+    });
+</script>

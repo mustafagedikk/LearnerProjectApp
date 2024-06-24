@@ -1,5 +1,7 @@
 ﻿@using EntityLayer.Entities
-@model List<Course>
+@using PagedList.Mvc
+@using PagedList
+@model PagedList.IPagedList<Course>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/TeacherLayout/Index.cshtml";
@@ -24,7 +26,7 @@
 
     @foreach (var item in Model)
     {
-        
+
         <tr>
             <td style="text-align:center;">@item.CourseId</td>
             <td style="text-align:center;">@item.CourseName</td>
@@ -40,6 +42,15 @@
     }
 </table>
 <a href="/TeacherCourse/AddCourse" class="btn btn-primary">Yeni Kurs Ekle</a>
+<br />
+
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+
+{
+LiElementClasses = new List<string>
+{"page-link"}
+})
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>

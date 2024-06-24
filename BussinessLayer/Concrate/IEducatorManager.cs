@@ -27,7 +27,7 @@ namespace BussinessLayer.Concrate
 
         public void TAdd(Educator entity)
         {
-            throw new NotImplementedException();
+            _educatorDal.Insert(entity);
         }
 
         public void TDelete(Educator entity)

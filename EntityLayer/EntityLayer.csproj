@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\About.cs" />
+    <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Banner.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Classroom.cs" />
@@ -52,7 +53,9 @@
     <Compile Include="Entities\CourseVideo.cs" />
     <Compile Include="Entities\FAQ.cs" />
     <Compile Include="Entities\Message.cs" />
+    <Compile Include="Entities\Question.cs" />
     <Compile Include="Entities\Review.cs" />
+    <Compile Include="Entities\SocialMedia.cs" />
     <Compile Include="Entities\Student.cs" />
     <Compile Include="Entities\Testimonial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,15 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace LearnerProjectApp.Controllers
 {
     public class CategoryController : Controller
     {
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
-        public ActionResult Index()
+        public ActionResult Index(int p=1)
         {
-            var values = cm.TGetList();
+            var values = cm.TGetList().ToPagedList(p, 18);
             return View(values);
         }
 

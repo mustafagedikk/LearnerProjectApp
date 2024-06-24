@@ -1,10 +1,14 @@
 ﻿@using EntityLayer.Entities
 @using LearnerProjectApp.Models
-@model Tuple<List<Course>, List<CourseReviewViewModel>>
+@using PagedList
+@using PagedList.Mvc
+@model Tuple<IPagedList<Course>, List<CourseReviewViewModel>>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/StudentLayout/StudentLayoutSideBar.cshtml";
 }
+
 <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
     <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
         <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
@@ -13,8 +17,6 @@
         <i class="fa fa-bars"></i>
     </a>
     <div class="d-none d-md-flex ms-4">
-        @*<input class="form-control bg-dark border-0" type="search" placeholder="Kurs Ara">
-            <input type="submit" value="Ara"/>*@
         @using (Html.BeginForm("Index", "CourseRegister", FormMethod.Get))
         {
             <p>
@@ -24,14 +26,6 @@
         }
     </div>
     <div class="navbar-nav align-items-center ms-auto">
-        @*<div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <i class="fa fa-envelope me-lg-2"></i>
-                    <span class="d-none d-lg-inline-flex">Message</span>
-                </a>
-
-            </div>*@
-
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img class="rounded-circle me-lg-2" src="~/Templates/darkpan-1.0.0/img/user.jpg" alt="" style="width: 40px; height: 40px;">
@@ -45,11 +39,11 @@
         </div>
     </div>
 </nav>
+
 <div class="bg-secondary" style="min-height: 100vh;">
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="0">
-               
                 <h4 id="discount-msg" class="line-bottom text-center mb-4">Üyeliğinin ilk haftasına özel %20 indirim fırsatını kaçırma!!</h4>
             </div>
         </div>
@@ -83,20 +77,41 @@
                     </div>
                 </div>
             }
-            <div style="padding-bottom: 70px;"></div>
         </div>
     </div>
+    <div class="pagination-container">
+        @Html.PagedListPager(Model.Item1, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+        {
+            LiElementClasses = new List<string> { "page-link" }
+        })
+    </div>
 </div>
+
+
 
 <script>
     // Animation effect for discount message
     var discountMsg = document.getElementById("discount-msg");
-    setTimeout(function() {
+    setTimeout(function () {
         discountMsg.style.opacity = "0";
-        setTimeout(function() {
+        setTimeout(function () {
             discountMsg.style.display = "none";
         }, 1000); // Fade out duration
     }, 3000); // Display duration
 </script>
 
+<style>
+    .pagination-container {
+        text-align: center;
+        padding: 20px 0;
+    }
 
+        .pagination-container .pagination {
+            display: inline-block;
+        }
+
+            .pagination-container .pagination li {
+                display: inline;
+                margin: 0 5px;
+            }
+</style>

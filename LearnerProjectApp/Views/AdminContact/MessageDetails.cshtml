@@ -1,0 +1,30 @@
+﻿@model EntityLayer.Entities.Message
+@{
+    ViewBag.Title = "EditCourse";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<br />
+<br />
+<h2>Mesaj</h2>
+
+
+
+
+    <label>Adı Soyadı</label>
+    @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control" })
+    <br />
+    <label>Mail Adresi</label>
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    <br />
+    <label>Konu</label>
+    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+    <br />
+    <label>Açıklama</label>
+    @Html.TextAreaFor(x => x.MessageContent, 5, 1, new { @class = "form-control" })
+    <br />
+
+    <br />
+    
+<a href="/AdminContact/Index/" class="btn btn-primary">Geri Dön</a>

@@ -8,7 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList;
+using PagedList.Mvc;
 namespace LearnerProjectApp.Controllers
 {
     public class StudentCourseController : Controller
@@ -19,7 +20,7 @@ namespace LearnerProjectApp.Controllers
         ReviewManager rw = new ReviewManager(new EfReviewDal());
         CourseVideoManager courseVideoManager = new CourseVideoManager(new EfCourseVideoDal());
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int p=1)
         {
             string username = (string)Session["studentName"];
             var studentvalue = studentManager.TGetList().Where(x => x.NameSurname == username).Select(x => x.StudentId).FirstOrDefault();
@@ -31,6 +32,8 @@ namespace LearnerProjectApp.Controllers
 
             List<Course> mycourselist = courseManager.TGetList().Where(course => mycourselistnumber.Contains(course.CourseId)).ToList();
 
+            var pagelistwithmycourselist = mycourselist.ToPagedList(p,9);
+
             List<CourseReviewViewModel> reviewList = rw.TGetList()
                                                             .GroupBy(x => x.CourseId)
                                                             .Select(group => new CourseReviewViewModel
@@ -39,7 +42,7 @@ namespace LearnerProjectApp.Controllers
                                                                 ReviewValue = group.Average(x => x.ReviewValue)
                                                             }).ToList();
 
-            var model = new Tuple<List<Course>, List<CourseReviewViewModel>>(mycourselist, reviewList);
+            var model = new Tuple<IPagedList<Course>, List<CourseReviewViewModel>>(pagelistwithmycourselist, reviewList);
             return PartialView(model);
 
             

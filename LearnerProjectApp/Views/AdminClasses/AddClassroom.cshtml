@@ -1,0 +1,62 @@
+﻿@model  EntityLayer.Entities.Classroom
+@{
+    ViewBag.Title = "AddClassroom";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<h2>Sınıf Ekle</h2>
+
+<form id="classroomForm" method="post">
+
+   
+    <label>Kurs Adı</label>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    <label>İkon</label>
+    @Html.TextBoxFor(x => x.Icon, new { @class = "form-control" })
+    <br />
+    <label>Açıklama</label>
+    @Html.TextAreaFor(x => x.Description, 3, 1, new { @class = "form-control" })
+    <br />
+    <a href="" id="kaydetDugmesieklesınıf" class="btn btn-primary">Kaydet</a>
+
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#kaydetDugmesieklesınıf').click(function (e) {
+            e.preventDefault(); // Varsayılan form gönderimini engelle
+
+            // Form verilerini topla
+            var formData = $('#classroomForm').serialize();
+
+            // Formu gönder
+            $.post('@Url.Action("AddClassroom", "AdminClasses")', formData)
+            .done(function () {
+                // Başarılı gönderim durumunda SweetAlert bildirimi göster
+                swal({
+                    title: "Başarılı!",
+                    text: "Kayıt başarıyla yapıldı.",
+                    icon: "success",
+                    button: false // Ok butonunu gizle
+                });
+
+                // Belirli bir süre sonra yönlendirme yap
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Index", "AdminClasses")';
+                }, 2000); // 2 saniye bekletme süresi
+            })
+            .fail(function () {
+                // Hata durumunu ele al
+                swal("Hata!", "Kayıt sırasında bir hata oluştu.", "error");
+            });
+        });
+    });
+</script>
+
+
+
+

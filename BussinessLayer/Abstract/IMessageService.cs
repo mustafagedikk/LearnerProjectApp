@@ -9,5 +9,8 @@ namespace BussinessLayer.Abstract
 {
    public interface IMessageService:IGenericService<Message>
     {
+        List<Message> GetListWithİsRead();
+        List<Message> GetListWithİsnotRead();
+        
     }
 }

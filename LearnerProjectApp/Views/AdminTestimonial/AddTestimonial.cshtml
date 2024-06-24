@@ -1,0 +1,64 @@
+﻿@model EntityLayer.Entities.Testimonial
+@{
+    ViewBag.Title = "AddTestimonial";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Testimonial Ekle</h2>
+
+
+
+<form id="TestimonialaddForm" method="post">
+
+   
+    <label>Ad Soyad</label>
+    @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control" })
+    <br />
+    <label>Title</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    <label>Resim Url</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+    <label>Açıklama</label>
+    @Html.TextAreaFor(x => x.Comment, 3, 1, new { @class = "form-control" })
+    <br />
+    <a href="" id="addtestimonial" class="btn btn-primary">Kaydet</a>
+
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#addtestimonial').click(function (e) {
+            e.preventDefault(); // Varsayılan form gönderimini engelle
+
+            // Form verilerini topla
+            var formData = $('#TestimonialaddForm').serialize();
+
+            // Formu gönder
+            $.post('@Url.Action("AddTestimonial", "AdminTestimonial")', formData)
+            .done(function () {
+                // Başarılı gönderim durumunda SweetAlert bildirimi göster
+                swal({
+                    title: "Başarılı!",
+                    text: "Kayıt başarıyla yapıldı.",
+                    icon: "success",
+                    button: false // Ok butonunu gizle
+                });
+
+                // Belirli bir süre sonra yönlendirme yap
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Index", "AdminTestimonial")';
+                }, 2000); // 2 saniye bekletme süresi
+            })
+            .fail(function () {
+                // Hata durumunu ele al
+                swal("Hata!", "Kayıt sırasında bir hata oluştu.", "error");
+            });
+        });
+    });
+</script>
+
+

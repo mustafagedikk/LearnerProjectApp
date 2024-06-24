@@ -1,0 +1,106 @@
+﻿@using EntityLayer.Entities
+@model  List<About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<br />
+<h3>Kurslar</h3>
+<br />
+<table class="table table-bordered table-hover">
+    <tr>
+        <th style="text-align:center;">#</th>
+        <th style="text-align:center;">Başlık</th>
+        <th style="text-align:center;">Resim Url</th>
+        <th style="text-align:center;">Açıklama</th>
+        <th style="text-align:center;">Detay 1</th>
+        <th style="text-align:center;">Detay 2</th>
+        <th style="text-align:center;">Detay 3</th>
+        <th style="text-align:center;">İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+<tr>
+    <td style="text-align:center;">@item.AboutId</td>
+    <td style="text-align:center;">@item.Title</td>
+    <td style="text-align:center;">@item.ImageUrl</td>
+    <td style="text-align:center;">@(item.Description.Length>50 ? item.Description.Substring(0,20) :  item.Description)</td>
+    <td style="text-align:center;">@(item.Item1.Length>50 ? item.Item1.Substring(0,20) :  item.Item1)</td>
+    <td style="text-align:center;">@(item.Item2.Length>50 ? item.Item2.Substring(0,20) :  item.Item2)</td>
+    <td style="text-align:center;">@(item.Item3.Length>50 ? item.Item3.Substring(0,20) :  item.Item3)</td>
+
+    <td style="text-align:center;">
+
+        <a href="/AdminAbout/EditAbout/@item.AboutId" class="btn btn-outline-info"><i class="fas fa-pencil-alt"></i> Güncelle</a>
+    </td>
+</tr>
+    }
+</table>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    // Sil butonuna tıklandığında SweetAlert ile onay kutusu göster
+    document.querySelectorAll('.delete-btn-delete').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const courseId = this.getAttribute('data-id');
+
+            Swal.fire({
+                title: '<span style="font-size: 60%;">Silmek istediğinize emin misiniz?</span>',
+
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: 'İptal',
+                customClass: {
+                    popup: 'custom-popup-class'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Silme işlemi gerçekleştir
+                    Swal.fire(
+                        '<span style="font-size: 65%;">Silme işlemi gerçekleşti!</span>',
+                        '',
+                        'success'
+                    ).then(() => {
+                        // Silme işlemi gerçekleştikten sonra controller'a yönlendir
+                        window.location.href = '/AdminCourse/DeleteCourse/' + courseId;
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .custom-popup-class {
+        width: 30% !important;
+    }
+
+    .pagination-container {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+        .pagination-container .pagination {
+            display: inline-block;
+        }
+
+            .pagination-container .pagination li {
+                display: inline;
+                margin: 0 5px;
+            }
+</style>
+
+
+
+

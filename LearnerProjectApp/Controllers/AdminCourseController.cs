@@ -2,10 +2,11 @@
 using DataAccessLayer.Concrate;
 using DataAccessLayer.Concrate.EntityFramework;
 using EntityLayer.Entities;
+using PagedList;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-
+using PagedList.Mvc;
 namespace LearnerProjectApp.Controllers
 {
     public class AdminCourseController : Controller
@@ -14,9 +15,9 @@ namespace LearnerProjectApp.Controllers
         CategoryManager CategoryManager = new CategoryManager(new EfCategoryDal());
         IEducatorManager em = new IEducatorManager(new EfEducatorDal());
         // GET: AdminCourse
-        public ActionResult Index()
+        public ActionResult Index(int p=1)
         {
-            var values = cm.TGetList();
+            var values = cm.TGetList().ToPagedList(p, 5);
             return View(values);
         }
 
@@ -96,9 +97,9 @@ namespace LearnerProjectApp.Controllers
             return RedirectToAction("index");
         }
 
-        public ActionResult PassiveCourse()
+        public ActionResult PassiveCourse(int p=1)
         {
-            var passivecourse = cm.GetPassiveCourseList();
+            var passivecourse = cm.GetPassiveCourseList().ToPagedList(p, 17);
             return View(passivecourse);
         }
     }

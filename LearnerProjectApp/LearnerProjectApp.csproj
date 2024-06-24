@@ -53,6 +53,12 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -127,9 +133,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminAboutController.cs" />
+    <Compile Include="Controllers\AdminClassesController.cs" />
+    <Compile Include="Controllers\AdminContactController.cs" />
     <Compile Include="Controllers\AdminCourseController.cs" />
     <Compile Include="Controllers\AdminDashboardController.cs" />
+    <Compile Include="Controllers\AdminFAQController.cs" />
     <Compile Include="Controllers\AdminLayoutController.cs" />
+    <Compile Include="Controllers\AdminLoginController.cs" />
+    <Compile Include="Controllers\AdminTestimonialController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CourseRegisterController.cs" />
@@ -142,6 +154,7 @@
     <Compile Include="Controllers\StudentLoginController.cs" />
     <Compile Include="Controllers\TeacherCourseController.cs" />
     <Compile Include="Controllers\TeacherLayoutController.cs" />
+    <Compile Include="Controllers\TeacherRegisterController.cs" />
     <Compile Include="Controllers\UILayoutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -155,6 +168,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -490,6 +504,24 @@
     <Content Include="Views\Default\Classroom.cshtml" />
     <Content Include="Views\Default\AboutUs.cshtml" />
     <Content Include="Views\Default\Testimonial.cshtml" />
+    <Content Include="Views\Default\Questions.cshtml" />
+    <Content Include="Views\UILayout\SocialMedia.cshtml" />
+    <Content Include="Views\UILayout\Contact.cshtml" />
+    <Content Include="Views\TeacherRegister\TeacherRegister.cshtml" />
+    <Content Include="Views\AdminLogin\AdminLogin.cshtml" />
+    <Content Include="Views\AdminContact\Index.cshtml" />
+    <Content Include="Views\AdminContact\MessageIsRead.cshtml" />
+    <Content Include="Views\AdminContact\MessageDetails.cshtml" />
+    <Content Include="Views\AdminClasses\Index.cshtml" />
+    <Content Include="Views\AdminClasses\AddClassroom.cshtml" />
+    <Content Include="Views\AdminClasses\EditClassroom.cshtml" />
+    <Content Include="Views\AdminAbout\Index.cshtml" />
+    <Content Include="Views\AdminAbout\EditAbout.cshtml" />
+    <Content Include="Views\AdminTestimonial\Index.cshtml" />
+    <Content Include="Views\AdminTestimonial\EditTestimonial.cshtml" />
+    <Content Include="Views\AdminTestimonial\AddTestimonial.cshtml" />
+    <Content Include="Views\AdminFAQ\Index.cshtml" />
+    <Content Include="Views\AdminFAQ\EditFAQ.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

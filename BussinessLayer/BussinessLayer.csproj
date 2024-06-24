@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IAdminService.cs" />
     <Compile Include="Abstract\IContactService.cs" />
     <Compile Include="Abstract\ICourseService.cs" />
     <Compile Include="Abstract\ICourseVideoService.cs" />
@@ -63,10 +64,13 @@
     <Compile Include="Abstract\ICourseRegisterService.cs" />
     <Compile Include="Abstract\IGenericService.cs" />
     <Compile Include="Abstract\IMessageService.cs" />
+    <Compile Include="Abstract\IQuestionService.cs" />
     <Compile Include="Abstract\IReviewService.cs" />
+    <Compile Include="Abstract\ISocialMediaService.cs" />
     <Compile Include="Abstract\IStudentService.cs" />
     <Compile Include="Abstract\ITestimonialService.cs" />
     <Compile Include="Concrate\AboutManager.cs" />
+    <Compile Include="Concrate\AdminManager.cs" />
     <Compile Include="Concrate\BannerManager.cs" />
     <Compile Include="Concrate\CategoryManager.cs" />
     <Compile Include="Concrate\ClassroomManager.cs" />
@@ -77,7 +81,9 @@
     <Compile Include="Concrate\CourseVideoManager.cs" />
     <Compile Include="Concrate\IEducatorManager.cs" />
     <Compile Include="Concrate\MessageManager.cs" />
+    <Compile Include="Concrate\QuestionManager.cs" />
     <Compile Include="Concrate\ReviewManager.cs" />
+    <Compile Include="Concrate\SocialMediaManager.cs" />
     <Compile Include="Concrate\StudentManager.cs" />
     <Compile Include="Concrate\TestimonialManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

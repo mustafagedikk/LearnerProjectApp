@@ -26,9 +26,12 @@ namespace DataAccessLayer.Concrete
         public DbSet<CourseVideo>  CourseVideos { get; set; }
         public DbSet<Contact>  Contacts { get; set; }
         public DbSet<Message>  Messages { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
-       
-        
+
+
     }
 
 }

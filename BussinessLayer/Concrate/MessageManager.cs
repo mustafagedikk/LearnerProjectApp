@@ -18,6 +18,16 @@ namespace BussinessLayer.Concrate
             _messageDal = messageDal;
         }
 
+        public List<Message> GetListWithİsnotRead()
+        {
+            return _messageDal.List(x => x.IsRead == false).OrderByDescending(x => x.MessageId).ToList();
+        }
+
+        public List<Message> GetListWithİsRead()
+        {
+            return _messageDal.List(x => x.IsRead == true).OrderByDescending(x => x.MessageId).ToList();
+        }
+
         public void TAdd(Message entity)
         {
             _messageDal.Insert(entity);
